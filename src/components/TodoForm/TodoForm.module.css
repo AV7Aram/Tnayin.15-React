@@ -1,0 +1,28 @@
+.newTask {
+    padding: 30px 20px;
+    border-radius: 10px;
+    input {
+        width: 45%;
+        height: 45px;
+        padding: 12px;
+        color: #111111;
+        font-weight: 500;
+        border-radius: 5px;
+        font-size: 15px;
+        border: 2px solid #d1d3d4;
+    }
+    button {
+        font-weight: 500;
+        font-size: 15px;
+        background-color: #0d75ec;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+        width: 12%;
+        height: 45px;
+        border-radius: 5px;
+        float: right;
+        margin-right: 5px;
+    }
+  }
+  

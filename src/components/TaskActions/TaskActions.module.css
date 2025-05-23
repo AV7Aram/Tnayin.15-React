@@ -1,0 +1,15 @@
+.edit,
+.delete {
+  background-color: #0a2ea4;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+svg{
+    font-size: 16px;
+}

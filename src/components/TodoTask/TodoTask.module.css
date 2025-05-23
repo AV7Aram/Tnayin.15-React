@@ -1,0 +1,19 @@
+.task {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-radius: 5px;
+    border: 1px solid #939697;
+    background-color: #c5e1e6;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.task input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+

@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    max-width: 1340px;
+    margin: auto;
+}
+
+/* ***************************** */
+
+body {
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+    background: #066acd;
+}
+
+.wrapper {
+    background: white;
+    border-radius: 10px;
+    width: 40%;
+    margin: 50px auto;
+}

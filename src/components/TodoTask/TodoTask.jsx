@@ -18,7 +18,7 @@ export function TodoTask({ task, setTodo }) {
 
     const updateTask = () => {
         fetch(`https://jsonplaceholder.typicode.com/todos/${task.id}`, {
-            method: "PUT",
+            method: "PATCH",
             headers: {
                 "content-type": "application/json"
             },
@@ -36,7 +36,7 @@ export function TodoTask({ task, setTodo }) {
 
     const toggleCompleted = () => {
         fetch(`https://jsonplaceholder.typicode.com/todos/${task.id}`, {
-            method: "PUT",
+            method: "PATCH",
             headers: {
                 "content-type": "application/json"
             },

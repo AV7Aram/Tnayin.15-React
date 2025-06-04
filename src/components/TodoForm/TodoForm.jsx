@@ -1,26 +1,20 @@
 import style from './TodoForm.module.css'
 import { TodoFilter } from '../TodoFilter/TodoFilter';
+import { instance } from '../../App';
 
 export function TodoForm({ task, setTask, setTodo, setFilter }) {
     const addTask = (e) => {
         e.preventDefault();
         if (task.trim()) {
-            fetch("https://jsonplaceholder.typicode.com/todos", {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify({ title: task.trim(), completed: false }),
-            })
-                .then((res) => res.json())
-                .then((data) => {
+            instance.post("todos", { title: task.trim(), completed: false })
+                .then((res) => {
                     setTodo((prev) => [
-                        { id: Date.now(), task: data.title, completed: false },
+                        { id: Date.now(), task: res.data.title, completed: false },
                         ...prev,
                     ]);
                     setTask("");
-                })
-        };
+                });
+        }
     }
 
     return (

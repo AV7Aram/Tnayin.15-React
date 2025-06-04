@@ -2,28 +2,21 @@ import { useState } from "react";
 import { TaskText } from "../TaskText/TaskText";
 import { TaskActions } from "../TaskActions/TaskActions";
 import style from "./TodoTask.module.css";
+import { instance } from "../../App";
 
 export function TodoTask({ task, setTodo }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editText, setEditText] = useState(task.task);
 
     const deleteTask = () => {
-        fetch(`https://jsonplaceholder.typicode.com/todos/${task.id}`, {
-            method: "DELETE",
-        })
+        instance.delete(`todos/${task.id}`)
             .then(() => {
                 setTodo((prev) => prev.filter((t) => t.id !== task.id));
-            })
+            });
     };
 
     const updateTask = () => {
-        fetch(`https://jsonplaceholder.typicode.com/todos/${task.id}`, {
-            method: "PATCH",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify({ title: editText }),
-        })
+        instance.patch(`todos/${task.id}`, { title: editText })
             .then(() => {
                 setTodo((prev) =>
                     prev.map((t) =>
@@ -31,24 +24,18 @@ export function TodoTask({ task, setTodo }) {
                     )
                 );
                 setIsEditing(false);
-            })
+            });
     };
 
     const toggleCompleted = () => {
-        fetch(`https://jsonplaceholder.typicode.com/todos/${task.id}`, {
-            method: "PATCH",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify({ completed: !task.completed }),
-        })
+        instance.patch(`todos/${task.id}`, { completed: !task.completed })
             .then(() => {
                 setTodo((prev) =>
                     prev.map((t) =>
                         t.id === task.id ? { ...t, completed: !t.completed } : t
                     )
                 );
-            })
+            });
     };
 
     const handleEditToggle = () => {

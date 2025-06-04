@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { TodoContainer } from "./components/TodoContainer/TodoContainer";
 import "./App.css";
+import axios from "axios";
+
+export const instance = axios.create({
+  baseURL: "https://jsonplaceholder.typicode.com/",
+});
 
 function App() {
   const [task, setTask] = useState("");
@@ -8,10 +13,9 @@ function App() {
   const [filter, setFilter] = useState("all");
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos?_limit=10")
-      .then((res) => res.json())
-      .then((data) =>
-        setTodo(data.map(({ id, title, completed }) => ({
+    instance.get("todos?_limit=10")
+      .then((res) =>
+        setTodo(res.data.map(({ id, title, completed }) => ({
           id,
           task: title,
           completed,
